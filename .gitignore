@@ -1,0 +1,9 @@
+*.exe
+
+*.obj
+
+*.sln
+
+*.pdb
+*.csproj
+*.cache
