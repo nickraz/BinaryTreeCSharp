@@ -10,7 +10,7 @@ namespace Trees
 	/// <summary>
 	/// Description of BinaryTree.
 	/// </summary>
-	public class BinaryTree<T> where T : IComparable<T>
+	public class BinaryTree<T> : IEnumerable<T> where T : IComparable<T>
 	{
 		private BinaryTree<T> parent, left, right;
 		private T val;
@@ -184,5 +184,49 @@ namespace Trees
 			return val.ToString();
 		}
 
+		
+		public IEnumerator<T> GetEnumerator()
+		{
+			if (left != null)
+			{
+				foreach (var item in this.left)
+				{
+					yield return item;
+				}
+			}
+
+			yield return this.val;
+
+			if (right != null)
+			{
+				foreach (var item in this.right)
+				{
+					yield return item;
+				}
+			}
+		}
+		
+		
+		System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+		{
+			if (left != null)
+			{
+				foreach (var item in this.left)
+				{
+					yield return item;
+				}
+			}
+
+			yield return this.val;
+
+			if (right != null)
+			{
+				foreach (var item in this.right)
+				{
+					yield return item;
+				}
+			}
+			
+		}
 	}
 }
